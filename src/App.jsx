@@ -6,10 +6,12 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import Collections from "./pages/Collections/Collections";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
