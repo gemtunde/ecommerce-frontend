@@ -1,16 +1,30 @@
 // import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiUser, BiCart } from "react-icons/bi";
+import { FaCentos } from "react-icons/fa";
 import "./Navbar.css";
+import { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleNavigate = (path) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
     navigate(path);
   };
   return (
     <div>
+      {isLoading && (
+        <div className="loader-container">
+          <div className="loader">
+            <FaCentos className="loader-icon" />
+          </div>
+        </div>
+      )}
       <nav className="navbar">
         <div className="nav-top">
           <Link to="/">
