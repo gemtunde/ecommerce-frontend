@@ -3,11 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiUser, BiCart } from "react-icons/bi";
 import { FaCentos } from "react-icons/fa";
 import "./Navbar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShopContext } from "../../context/ShopContex";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [items, setItems] = useState("");
 
   const handleNavigate = (path) => {
     setIsLoading(true);
@@ -16,6 +18,14 @@ const Navbar = () => {
     }, 2000);
     navigate(path);
   };
+
+  const { updateSearchTerm } = useContext(ShopContext);
+
+  //const searchedProduct = products.map((item) => item.name.includes(items));
+  const handleSearch = () => {
+    updateSearchTerm(items);
+  };
+
   return (
     <div>
       {isLoading && (
@@ -35,8 +45,12 @@ const Navbar = () => {
               type="text"
               className="search-input"
               placeholder="search for products...."
+              value={items}
+              onChange={(e) => setItems(e.target.value)}
             />
-            <button className="search-btn">Search</button>
+            <button onClick={handleSearch} className="search-btn">
+              Search
+            </button>
           </div>
           <div className="icons">
             <div className="profile-group">
@@ -57,19 +71,19 @@ const Navbar = () => {
         <div className="nav-bottom">
           <div className="nav-container">
             <div
-              onClick={() => handleNavigate("/category/men")}
+              onClick={() => handleNavigate("/category/Men")}
               className="nav-link"
             >
               Men
             </div>
             <div
-              onClick={() => handleNavigate("/category/women")}
+              onClick={() => handleNavigate("/category/Women")}
               className="nav-link"
             >
               Women
             </div>
             <div
-              onClick={() => handleNavigate("/category/kids")}
+              onClick={() => handleNavigate("/category/Kids")}
               className="nav-link"
             >
               Kids

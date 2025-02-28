@@ -65,3 +65,6 @@ a {
 .product-image img:hover {
   transform: scale(1);
 }
+.banner img {
+  width: 1300px;
+}

@@ -3,13 +3,31 @@ import { ShopContext } from "../../context/ShopContex";
 import { Link } from "react-router-dom";
 
 const HomeCollection = () => {
-  const { products } = useContext(ShopContext);
+  const { products, searchTerm } = useContext(ShopContext);
   const [homeProduct, setHomeProducts] = useState([]);
 
+  // useEffect(() => {
+  //   //const bestProduct = products.filter((item) => item.bestseller);
+  //   if (searchTerm !== "") {
+  //     const searchedItem = products.filter((item) =>
+  //       item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  //     );
+  //     console.log("searched", searchedItem);
+  //     setHomeProducts(searchedItem);
+  //   }
+  //   setHomeProducts(products.slice(0, 10));
+  // }, [products, searchTerm, setHomeProducts]);
   useEffect(() => {
-    //const bestProduct = products.filter((item) => item.bestseller);
-    setHomeProducts(products.slice(0, 10));
-  }, [products]);
+    if (searchTerm !== "") {
+      const searchedItem = products.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      console.log("searched", searchedItem);
+      setHomeProducts(searchedItem);
+    } else {
+      setHomeProducts(products.slice(0, 10));
+    }
+  }, [products, searchTerm]);
   return (
     <div>
       <div className="product-container">
