@@ -58,8 +58,8 @@ export const product = [
     description:
       "  Lorem ipsum dolor sit amet consectetur adipisicing elit. In veniam deleniti iure. Natus ab quisquam delectus voluptatem ipsum laboriosam laudantium quia vero rem earum, accusamus officia cumque vel architecto iste.",
     price: 200,
-    image: [p_img2_1],
-    // image: [p_img2_1, p_img2_2, p_img2_3, p_img2_4],
+    //image: [p_img2_1],
+    image: [p_img2_1, p_img2_2, p_img2_3, p_img2_4],
     category: "Kids",
     sizes: ["M", "L", "XL"],
     date: 1716621345448,
