@@ -1,0 +1,49 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 24rem;
+  margin: 3.5rem auto;
+  gap: 1rem;
+  color: #4a4a4a;
+  /* border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; */
+}
+.form-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+.form-title {
+  font-size: 1.875rem;
+}
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+}
+.form_footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.forgot-password,
+.toggle-auth-state {
+  cursor: pointer;
+}
+.form-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 300;
+  margin-top: 1rem;
+}
