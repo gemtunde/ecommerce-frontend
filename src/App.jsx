@@ -8,10 +8,12 @@ import Collections from "./pages/Collections/Collections";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

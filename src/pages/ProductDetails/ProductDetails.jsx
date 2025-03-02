@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/ShopContex";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./ProductDetails.css";
 import RelatedProduct from "../../components/RelatedProduct/RelatedProduct";
 
 const ProductDetails = () => {
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const { productId } = useParams();
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
@@ -72,9 +72,12 @@ const ProductDetails = () => {
               <p>Seamless and Secure Payment</p>
               <p>Several payment option available</p>
             </div>
-            <Link to="/cart" className="add-to-cart">
+            <button
+              onClick={() => addToCart(productData._id, size)}
+              className="add-to-cart"
+            >
               ADD To CART
-            </Link>
+            </button>
           </div>
         </div>
         <div className="description-review-section">
