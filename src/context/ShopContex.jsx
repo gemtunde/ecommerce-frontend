@@ -29,6 +29,7 @@ const ShopContextProvider = ({ children }) => {
     }
     setCartItems(updatedCart);
     console.log(`CART ID ---${itemId}.... SIZE - ${size}`);
+    toast.success("Product added to cart");
   };
   //get the amount of items in the cart
   const getCartCount = () => {
@@ -74,6 +75,7 @@ const ShopContextProvider = ({ children }) => {
     getCartCount,
     updateQuantity,
     getCartAmount,
+    cartItems,
   };
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 };

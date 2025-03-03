@@ -19,7 +19,7 @@ const Navbar = () => {
     navigate(path);
   };
 
-  const { updateSearchTerm } = useContext(ShopContext);
+  const { updateSearchTerm, getCartCount } = useContext(ShopContext);
 
   //const searchedProduct = products.map((item) => item.name.includes(items));
   const handleSearch = () => {
@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
             <div className="cart-icon" onClick={() => handleNavigate("/cart")}>
               <BiCart className="icon" />
-              <span className="cart-count">9</span>
+              <span className="cart-count">{getCartCount()}</span>
             </div>
           </div>
         </div>
