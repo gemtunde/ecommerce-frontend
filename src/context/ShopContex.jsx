@@ -6,6 +6,7 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = ({ children }) => {
   const currency = "$";
+
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState(product);
   const [searchTerm, setSearchTerm] = useState("");
@@ -65,7 +66,8 @@ const ShopContextProvider = ({ children }) => {
     }
     return totalAmount;
   };
-
+  // const delivery_fee = 20;
+  const delivery_fee = getCartAmount() > 0 ? 20 : 0;
   const value = {
     products,
     currency,
@@ -76,6 +78,7 @@ const ShopContextProvider = ({ children }) => {
     updateQuantity,
     getCartAmount,
     cartItems,
+    delivery_fee,
   };
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 };
