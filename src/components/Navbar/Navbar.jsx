@@ -24,10 +24,10 @@ const Navbar = () => {
 
   const logout = () => {
     navigate("/login");
-    localStorage.removeItem("token-FE");
+    localStorage.removeItem("token");
     setToken("");
   };
-  const getToken = localStorage.getItem("token-FE");
+  const getToken = localStorage.getItem("token");
   //const searchedProduct = products.map((item) => item.name.includes(items));
   const handleSearch = () => {
     updateSearchTerm(items);

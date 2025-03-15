@@ -35,8 +35,20 @@ const ShopContextProvider = ({ children }) => {
       updatedCart[itemId][size] = (updatedCart[itemId][size] || 0) + 1;
     }
     setCartItems(updatedCart);
-    console.log(`CART ID ---${itemId}.... SIZE - ${size}`);
     toast.success("Product added to cart");
+
+    if (token) {
+      try {
+        await axios.post(
+          backendUrl + "/api/cart/add",
+          { itemId, size },
+          { headers: { token } }
+        );
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    }
   };
   //get the amount of items in the cart
   const getCartCount = () => {
@@ -56,8 +68,40 @@ const ShopContextProvider = ({ children }) => {
     let cartData = structuredClone(cartItems);
     cartData[itemId][size] = quantity;
     setCartItems(cartData);
+
+    if (token) {
+      try {
+        await axios.post(
+          backendUrl + "/api/cart/update",
+          { itemId, size, quantity },
+          {
+            headers: { token },
+          }
+        );
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    }
   };
 
+  const getUserCart = async (token) => {
+    try {
+      const response = await axios.post(
+        backendUrl + "/api/cart/get",
+        {},
+        {
+          headers: { token },
+        }
+      );
+      if (response.data.success) {
+        setCartItems(response.data.cartData);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
   //get cart total
   const getCartAmount = () => {
     let totalAmount = 0;
@@ -78,7 +122,6 @@ const ShopContextProvider = ({ children }) => {
       const response = await axios.get(`${backendUrl}/api/product/list`);
       if (response.data.success) {
         setProducts(response.data.products);
-        console.log(response.data.products);
       } else {
         toast.error(response.data.message);
       }
@@ -89,6 +132,12 @@ const ShopContextProvider = ({ children }) => {
   };
   useEffect(() => {
     getProductData();
+  }, []);
+  useEffect(() => {
+    if (!token && localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+      getUserCart(localStorage.getItem("token"));
+    }
   }, []);
   // const delivery_fee = 20;
   const delivery_fee = getCartAmount() > 0 ? 20 : 0;
