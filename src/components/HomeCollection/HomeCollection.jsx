@@ -41,7 +41,7 @@ const HomeCollection = () => {
               <div className="product-card" key={product._id}>
                 <div className="product-image">
                   <Link to={`/product/${product._id}`}>
-                    <img src={product.image} alt="product" />
+                    <img src={product.image[0]} alt="product" />
                   </Link>
                 </div>
                 <h3>{product.name}</h3>

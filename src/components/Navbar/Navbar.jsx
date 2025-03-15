@@ -19,8 +19,15 @@ const Navbar = () => {
     navigate(path);
   };
 
-  const { updateSearchTerm, getCartCount } = useContext(ShopContext);
+  const { updateSearchTerm, getCartCount, token, setToken } =
+    useContext(ShopContext);
 
+  const logout = () => {
+    navigate("/login");
+    localStorage.removeItem("token-FE");
+    setToken("");
+  };
+  const getToken = localStorage.getItem("token-FE");
   //const searchedProduct = products.map((item) => item.name.includes(items));
   const handleSearch = () => {
     updateSearchTerm(items);
@@ -59,7 +66,11 @@ const Navbar = () => {
                 <Link to="/login">
                   <p className="dropdown-item">Account</p>
                 </Link>
-                <p className="dropdown-item">Logout</p>
+                {getToken === "" ? null : (
+                  <p onClick={logout} className="dropdown-item">
+                    Logout
+                  </p>
+                )}
               </div>
             </div>
             <div className="cart-icon" onClick={() => handleNavigate("/cart")}>

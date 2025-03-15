@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
   return (
     <div>
