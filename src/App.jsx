@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
+import Checkout from "./pages/Checkout/Checkout";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/category/:category" element={<Collections />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
       </Routes>
